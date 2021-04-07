@@ -48,6 +48,19 @@ export class MessageBox extends React.PureComponent {
             this.props.dateString ||
             format(this.props.date)
         );
+        
+        if(this.props.type === 'text'){
+            const text = this.props.text.split('\n')
+
+            const items = [];
+            for (let i = 0; i < text.length; i++) {
+                items.push(
+                    <div className="rce-mbox-text">
+                        {text[i]}
+                    </div>
+                )
+            }
+        }
 
         return (
             <div
@@ -136,9 +149,9 @@ export class MessageBox extends React.PureComponent {
 
                                 {
                                     this.props.type === 'text' &&
-                                    <div className="rce-mbox-text">
-                                        {this.props.text}
-                                    </div>
+                                        {items}
+                                    
+                                   
                                 }
 
                                 {
